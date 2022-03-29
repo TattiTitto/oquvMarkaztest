@@ -35,7 +35,8 @@ app.post("/teacher", urlencodedParser, (req, res) => {
         client.query(`DELETE FROM con_group_student WHERE group_id in(SELECT id FROM groups WHERE teacher_id=${req.body.id})`, (err0, res0) => {console.log(err0);})
         client.query(`DELETE FROM groups WHERE teacher_id=${req.body.id}`, (err0, res0) => {})
         client.query(`DELETE FROM teachers WHERE id=${req.body.id}`, (err0, res0) => {})
-    } else client.query(`DELETE FROM con_teacher_subject WHERE teacher_id=${req.body.conid}`, (err0, res0) => {})
+    } else if (req.body.remove == 'groups') client.query(`DELETE FROM groups WHERE teacher_id=${req.body.id}`, (err0, res0) => {})
+    else client.query(`DELETE FROM con_teacher_subject WHERE teacher_id=${req.body.conid}`, (err0, res0) => {})
     teacher(req, res)
 })
 
@@ -127,7 +128,7 @@ app.post('/schedule', urlencodedParser, (req, res) => {
     schedule(req, res)
 })
 
-app.listen(process.env.PORT, () => console.log("Server is listening 8080"))
+app.listen(process.env.PORT, () => console.log(`Server is listening ${process.env.PORT}`))
 
 function teacher(req, res) {
     client.query(`SELECT * FROM teachers`, (err1, res1) => 
