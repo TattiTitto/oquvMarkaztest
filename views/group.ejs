@@ -1,0 +1,223 @@
+<a href="/"><button class="btn btn-dark m-3"><h5 class="m-0">Home</h5></button></a>
+<div class="container text-center">
+    <% teachers %>
+    <% subjects %>
+    <% conTS %>
+    <% groups %>
+    
+    <div class="modal fade" id="addGroup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><h2 class="mt-2 mb-2">Add group</h2></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/group" method="post" class="card-bodyjustify-content-center">
+                        <div class="form-group d-flex justify-content-between w-100 text-center">
+                            <label for="add" class="p-2"><h4 class="p-0" style="font-size: 20px;">Add group</h4></label>
+                            <input readonly required name="add" type="text" value="group" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="name" class="p-2"><h4 class="p-0" style="font-size: 20px;">Name</h4></label>
+                            <input required name="name" type="text" placeholder="Groups's name" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="subject" class="p-2"><h4 class="p-0" style="font-size: 20px;">Subject</h4></label>
+                            <input readonly required name="subject" id="subject" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="teacher" class="p-2"><h4 class="p-0" style="font-size: 20px;">Teacher</h4></label>
+                            <select required name="teacher" id="teacher" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;"></select>
+                        </div>
+                        <a href="/group"><button class="btn btn-success mt-2 w-50 p-2" type="submit"><h4 class="m-0">Add</h4></button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="addStudent" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><h2 class="mt-2 mb-2">Add student</h2></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/group" method="post" class="card-bodyjustify-content-center">
+                        <div class="form-group d-flex justify-content-between w-100 text-center">
+                            <label for="add" class="p-2"><h4 class="p-0" style="font-size: 20px;">Add student</h4></label>
+                            <input readonly required name="add" type="text" value="student" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="subject" class="p-2"><h4 class="p-0" style="font-size: 20px;">Subject</h4></label>
+                            <input readonly required name="subject" id="subjectSt" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="group" class="p-2"><h4 class="p-0" style="font-size: 20px;">Group</h4></label>
+                            <input readonly required name="group" id="groupSt" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="teacher" class="p-2"><h4 class="p-0" style="font-size: 20px;">Teacher</h4></label>
+                            <input readonly required name="teacher" id="teacherSt" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="student" class="p-2"><h4 class="p-0" style="font-size: 20px;">Student ID</h4></label>
+                            <input required type="number" name="student" id="studentSt" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <a href="/group"><button class="btn btn-success mt-2 w-50 p-2" type="submit"><h4 class="m-0">Add</h4></button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="remove" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><h2 class="mt-2 mb-2">Remove</h2></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/group" method="post" class="card-body justify-content-center">
+                        <div class="form-group d-flex justify-content-between w-100 text-center">
+                            <label for="remove" class="p-2"><h4 class="p-0" style="font-size: 20px;">Remove</h4></label>
+                            <input readonly required name="remove" type="text" id="roll" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-2 d-flex justify-content-between w-100 text-center">
+                            <label for="name" class="p-2"><h4 class="p-0" style="font-size: 20px;">Name</h4></label>
+                            <input readonly required name="name" id="name" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-2 d-none justify-content-between w-100 text-center">
+                            <label for="conid" class="p-2"></label>
+                            <input name="conid" id="conid">
+                        </div>
+                        <div class="form-group mt-2 d-flex justify-content-between w-100 text-center">
+                            <label for="id" class="p-2"><h4 class="p-0" style="font-size: 20px;">ID</h4></label>
+                            <input readonly required name="id" id="id" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <a href="/group"><button class="btn btn-success mt-2 w-50 p-2" type="submit"><h4 class="m-0">Remove</h4></button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg-primary"><h3>Subjects</h3></div>
+                <div class="card-body pb-0" id="subjectItems"></div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg-primary"><h3>Groups</h3></div>
+                <div class="card-body pb-0" id="groups"></div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg-primary"><h3>Students</h3></div>
+                <div class="card-body pb-0" id="students"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var teachers = JSON.parse('<%- JSON.stringify(teachers) %>');
+    var subjects = JSON.parse('<%- JSON.stringify(subjects) %>');
+    var groups= JSON.parse('<%- JSON.stringify(groups) %>');
+    var conTS = JSON.parse('<%- JSON.stringify(conTS) %>');
+    var conGS = JSON.parse('<%- JSON.stringify(conGS) %>');
+    var students = JSON.parse('<%- JSON.stringify(students) %>');
+
+    var optsSub = ""
+    for (let i = 0; i <subjects.length; i++) optsSub += `<option value="${subjects[i].name}">` + subjects[i].name + '</option>\n'
+    document.getElementById('subject').innerHTML = optsSub
+    
+    var sub = ""
+    for (let i = 0; i <subjects.length; i++) sub += '<button onclick="subject(' + subjects[i].id + ", "+ i +')" class="btn subject w-100 d-block btn-warning mb-3 p-2"><h5 class="m-0">' + subjects[i].name + "</h5></button>\n"
+    document.getElementById('subjectItems').innerHTML = sub
+    
+    var subId, grId, subCount, grCount
+    function subject(id, count) {
+        subCount = count
+        document.querySelectorAll('.subject').forEach(item => item.classList.remove('btn-danger'))
+        document.querySelectorAll('.subject').item(count).classList.add('btn-danger')
+
+        var gr = "", t = 0
+        for (var i = 0; i < groups.length; i++)
+            if(groups[i].subject_id == id) {
+                gr += `<div class="btn-group w-100 mb-3"><button onclick="group(${groups[i].id}, ${t})" class="btn w-75 group d-block btn-warning p-2"><h5 class="m-0">` + groups[i].name + "</h5></button>\n"+
+                `<button type="submit" data-toggle="modal" data-target="#remove" class="btn p-0 btn-danger bi bi-trash-fill" onclick="remove('groups', '`+groups[i].name+`', '`+groups[i].id+`', 0)"></button></div>`
+                t++
+            }
+        gr += '<button type="submit" data-toggle="modal" data-target="#addGroup" class="btn w-75 btn-danger mb-3"><h5 class="m-0">Add Group</h5></button>'
+        console.log(gr);
+        document.getElementById('groups').innerHTML = gr
+        
+        for (let i = 0; i < subjects.length; i++) if(subjects[i].id == id) document.querySelector('#subject').defaultValue = subjects[i].name
+
+        var optsTech = ""
+        for (let i = 0; i < subjects.length; i++)
+            if(subjects[i].id == id)
+                for (let j = 0; j < conTS.length; j++)
+                    if(conTS[j].subject_id == subjects[i].id)
+                        for (let k = 0; k < teachers.length; k++)
+                            if(conTS[j].teacher_id == teachers[k].id)
+                                optsTech += `<option value="${teachers[k].name}">` + teachers[k].name + '</option>\n'
+        document.getElementById('teacher').innerHTML = optsTech
+        document.getElementById("students").innerHTML = ""
+    }
+    
+    function group(id, count) {
+        grId = id
+        grCount = count
+        document.querySelectorAll('.group').forEach(item => item.classList.remove('btn-danger'))
+        document.querySelectorAll('.group').item(count).classList.add('btn-danger')
+
+        var st = "", t = 0
+        for (let i = 0; i < conGS.length; i++)
+            if(conGS[i].group_id == id)
+                for (let j = 0; j < students.length; j++)
+                    if(students[j].id == conGS[i].student_id) {
+                        st += `<div class="btn-group w-100 mb-3"><button class="btn w-75 group d-block btn-warning p-2"><h5 class="m-0">` + students[j].name + "</h5></button>\n"+
+                        `<button type="submit" data-toggle="modal" data-target="#remove" class="btn p-0 btn-danger bi bi-trash-fill" onclick="remove('students', '`+students[j].name+`', '`+students[j].id+`', '`+conGS[i].group_id+`')"></button></div>`
+                        t++
+                    }
+        if(t < 20) st += `<button type="submit" onclick="addStudent()" data-toggle="modal" data-target="#addStudent" class="btn w-75 btn-danger mb-3"><h5 class="m-0">Add Student</h5></button>`
+        document.getElementById("students").innerHTML = st
+    }
+
+    function addStudent() {
+        document.getElementById('subjectSt').defaultValue = subjects[subCount].name
+        for (let i = 0; i < groups.length; i++)
+            if (groups[i].id == grId)
+                document.getElementById('groupSt').defaultValue = groups[i].name
+        // for (let i = 0; i < groups.length; i++) {
+        //     if(groups[i].name == )
+        // }
+
+        for (let i = 0; i < teachers.length; i++) {
+            if(teachers[i].id== groups[grCount].teacher_id) {
+                document.getElementById('teacherSt').defaultValue = teachers[i].name
+            }
+        }
+    }
+
+    function remove(table, name, id, conid) {
+        document.getElementById('roll').defaultValue = table
+        document.getElementById('name').defaultValue = name
+        document.getElementById('id').defaultValue = id
+        if(conid != 0) document.getElementById('conid').defaultValue = conid
+    }
+</script>

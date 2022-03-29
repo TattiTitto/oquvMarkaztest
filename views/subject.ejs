@@ -1,0 +1,91 @@
+<a href="/"><button class="btn btn-dark m-3"><h5 class="m-0">Home</h5></button></a>
+<div class="container text-center">
+    <% subjects %>
+    
+    <div class="modal fade" id="addSubject" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><h2 class="mt-2 mb-2">Add Subject</h2></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/subject" method="post" class="card-body justify-content-center">
+                        <div class="form-group d-flex justify-content-between w-100 text-center">
+                            <label for="name" class="p-2"><h4 class="p-0" style="font-size: 20px;">Name</h4></label>
+                            <input required name="name" type="text" placeholder="Subject's name" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <a href="/subject"><button class="btn btn-success mt-2 w-50 p-2" type="submit"><h4 class="m-0">Add</h4></button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="remove" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><h2 class="mt-2 mb-2">Remove</h2></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/subject" method="post" class="card-body justify-content-center">
+                        <div class="form-group d-flex justify-content-between w-100 text-center">
+                            <label for="remove" class="p-2"><h4 class="p-0" style="font-size: 20px;">Remove</h4></label>
+                            <input readonly required name="remove" type="text" id="roll" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-2 d-flex justify-content-between w-100 text-center">
+                            <label for="name" class="p-2"><h4 class="p-0" style="font-size: 20px;">Name</h4></label>
+                            <input readonly required name="name" id="name" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-2 d-none justify-content-between w-100 text-center">
+                            <label for="conid" class="p-2"><h4 class="p-0" style="font-size: 20px;">Connection ID</h4></label>
+                            <input readonly required name="conid" id="conid" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-2 d-flex justify-content-between w-100 text-center">
+                            <label for="id" class="p-2"><h4 class="p-0" style="font-size: 20px;">ID</h4></label>
+                            <input readonly required name="id" id="id" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <a href="/subject"><button class="btn btn-success mt-2 w-50 p-2" type="submit"><h4 class="m-0">Remove</h4></button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-4 offset-4">
+            <div class="card">
+                <div class="card-header bg-primary"><h3>Subjects</h3></div>
+                <div class="card-body pb-0" id="subject">
+                    <% for(var i=0; i < subjects.length; i++) { %>
+                        <% if (subjects[i].name != '') { %>
+                            <a style="text-decoration: none;">
+                                <div class="btn-group w-100 mb-3">
+                                    <button type="submit" class="btn subject d-block btn-warning p-2 w-75"><h5 class="m-0"><%- subjects[i].name %></h5></button>
+                                    <button type="submit" data-toggle="modal" data-target="#remove" class="btn p-0 btn-danger bi bi-trash-fill" onclick="remove('subjects', '<%= subjects[i].name %>', '<%= subjects[i].id %>', 0)"></button>
+                                </div>
+                            </a>
+                        <% } %>
+                    <% } %>
+                    <button class="btn w-75 btn-success mb-3" data-toggle="modal" data-target="#addSubject"><h5 class="m-0">Add Subject</h5></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var subjects = JSON.parse('<%- JSON.stringify(subjects) %>');
+    
+    function remove(table, name, id, conid) {
+        document.getElementById('roll').defaultValue = table
+        document.getElementById('name').defaultValue = name
+        document.getElementById('id').defaultValue = id
+        if(conid != 0) document.getElementById('conid').defaultValue = conid
+    }
+</script>

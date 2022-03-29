@@ -1,0 +1,335 @@
+<a href="/"><button class="btn btn-dark m-3"><h5 class="m-0">Home</h5></button></a>
+<div class="container text-center">
+    <% teachers %>
+    <% subjects %>
+    <% conTS %>
+    <% groups %>
+    <% schedule %>
+    
+    <div class="modal fade" id="addGroup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><h2 class="mt-2 mb-2">Add group</h2></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/schedule" method="post" class="card-bodyjustify-content-center">
+                        <div class="form-group d-flex justify-content-between w-100 text-center">
+                            <label for="add" class="p-2"><h4 class="p-0" style="font-size: 20px;">Add group</h4></label>
+                            <input readonly required name="add" type="text" value="group" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="teacher" class="p-2"><h4 class="p-0" style="font-size: 20px;">Teacher</h4></label>
+                            <select required name="teacher" onclick="t()" id="teacher" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;"></select>
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="subject" class="p-2"><h4 class="p-0" style="font-size: 20px;">Subject</h4></label>
+                            <select required name="subject" onclick="s()" id="subject" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;"></select>
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="group" class="p-2"><h4 class="p-0" style="font-size: 20px;">Group</h4></label>
+                            <select required name="group" id="group" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;"></select>
+                        </div>
+                        <div class="form-group mt-3 d-none justify-content-between w-100 text-center">
+                            <label for="day_id" class="p-2"><h4 class="p-0" style="font-size: 20px;">day_id</h4></label>
+                            <input required name="day_id" id="day_id" type="text" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <a href="/schedule"><button class="btn btn-success mt-2 w-50 p-2" type="submit"><h4 class="m-0">Add</h4></button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="addStudent" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><h2 class="mt-2 mb-2">Add student</h2></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/group" method="post" class="card-bodyjustify-content-center">
+                        <div class="form-group d-flex justify-content-between w-100 text-center">
+                            <label for="add" class="p-2"><h4 class="p-0" style="font-size: 20px;">Add student</h4></label>
+                            <input readonly required name="add" type="text" value="student" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="subject" class="p-2"><h4 class="p-0" style="font-size: 20px;">Subject</h4></label>
+                            <input readonly required name="subject" id="subjectSt" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="group" class="p-2"><h4 class="p-0" style="font-size: 20px;">Group</h4></label>
+                            <input readonly required name="group" id="groupSt" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="teacher" class="p-2"><h4 class="p-0" style="font-size: 20px;">Teacher</h4></label>
+                            <input readonly required name="teacher" id="teacherSt" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-between w-100 text-center">
+                            <label for="student" class="p-2"><h4 class="p-0" style="font-size: 20px;">Student ID</h4></label>
+                            <input required type="number" name="student" id="studentSt" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <a href="/group"><button class="btn btn-success mt-2 w-50 p-2" type="submit"><h4 class="m-0">Add</h4></button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="remove" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><h2 class="mt-2 mb-2">Remove</h2></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/schedule" method="post" class="card-body justify-content-center">
+                        <div class="form-group d-flex justify-content-between w-100 text-center">
+                            <label for="remove" class="p-2"><h4 class="p-0" style="font-size: 20px;">Remove</h4></label>
+                            <input readonly required name="remove" type="text" id="roll" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-2 d-flex justify-content-between w-100 text-center">
+                            <label for="name" class="p-2"><h4 class="p-0" style="font-size: 20px;">Name</h4></label>
+                            <input readonly required name="name" id="name" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <div class="form-group mt-2 d-none justify-content-between w-100 text-center">
+                            <label for="conid" class="p-2"></label>
+                            <input name="conid" id="conid">
+                        </div>
+                        <div class="form-group mt-2 d-flex justify-content-between w-100 text-center">
+                            <label for="id" class="p-2"><h4 class="p-0" style="font-size: 20px;">ID</h4></label>
+                            <input readonly required name="id" id="id" class="btn border-primary text-dark p-2" style="font-size: 22px;width: 63%;">
+                        </div>
+                        <a href="/schedule"><button class="btn btn-success mt-2 w-50 p-2" type="submit"><h4 class="m-0">Remove</h4></button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg-primary"><h3>Week</h3></div>
+                <div class="card-body pb-0" id="subjectItems">
+                    <div class="btn-group w-100 mb-3">
+                        <button type="button" class="btn btn-primary w-25 weekDay p-2"></button>
+                        <button onclick="week(0)" class="btn day w-100 d-block btn-warning p-2"><h5 class="m-0">Yakshanba</h5></button>
+                    </div>
+                    <div class="btn-group w-100 mb-3">
+                        <button type="button" class="btn btn-primary w-25 weekDay p-2"></button>
+                        <button onclick="week(1)" class="btn day w-100 d-block btn-warning p-2"><h5 class="m-0">Dushanba</h5></button>
+                    </div>
+                    <div class="btn-group w-100 mb-3">
+                        <button type="button" class="btn btn-primary w-25 weekDay p-2"></button>
+                        <button onclick="week(2)" class="btn day w-100 d-block btn-warning p-2"><h5 class="m-0">Seshanba</h5></button>
+                    </div>
+                    <div class="btn-group w-100 mb-3">
+                        <button type="button" class="btn btn-primary w-25 weekDay p-2"></button>
+                        <button onclick="week(3)" class="btn day w-100 d-block btn-warning p-2"><h5 class="m-0">Chorshanba</h5></button>
+                    </div>
+                    <div class="btn-group w-100 mb-3">
+                        <button type="button" class="btn btn-primary w-25 weekDay p-2"></button>
+                        <button onclick="week(4)" class="btn day w-100 d-block btn-warning p-2"><h5 class="m-0">Payshanba</h5></button>
+                    </div>
+                    <div class="btn-group w-100 mb-3">
+                        <button type="button"  class="btn btn-primary w-25 weekDay p-2"></button>
+                        <button onclick="week(5)" class="btn day w-100 d-block btn-warning p-2"><h5 class="m-0">Juma</h5></button>
+                    </div>
+                    <div class="btn-group w-100 mb-3">
+                        <button type="button" class="btn btn-primary w-25 weekDay p-2"></button>
+                        <button onclick="week(6)" class="btn day w-100 d-block btn-warning p-2"><h5 class="m-0">Shanba</h5></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg-primary"><h3>Groups</h3></div>
+                <div class="card-body pb-0" id="groups"></div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg-primary"><h3>Students</h3></div>
+                <div class="card-body pb-0" id="students"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var teachers = JSON.parse('<%- JSON.stringify(teachers) %>');
+    var subjects = JSON.parse('<%- JSON.stringify(subjects) %>');
+    var groups= JSON.parse('<%- JSON.stringify(groups) %>');
+    var conTS = JSON.parse('<%- JSON.stringify(conTS) %>');
+    var conGS = JSON.parse('<%- JSON.stringify(conGS) %>');
+    var students = JSON.parse('<%- JSON.stringify(students) %>');
+    var schedule = JSON.parse('<%- JSON.stringify(schedule) %>');
+
+    var optsTeach = ""
+    for (let l = 0; l < teachers.length; l++) optsTeach += `<option value="${teachers[l].name}">${teachers[l].name}</option>\n`
+    document.getElementById("teacher").innerHTML = optsTeach
+
+    var date = new Date()
+    date.setDate(date.getDate() - date.getDay())
+    for (let a = 0; a < 7; a++) {
+        document.querySelectorAll(".weekDay").item(a).innerHTML = date.toLocaleDateString()
+        date.setDate(date.getDate() + 1)
+    }
+
+    var dayCount, grId, grCount
+    function week(count) {
+        dayCount = count
+        t()
+        document.getElementById("day_id").value = count
+        document.querySelectorAll('.day').forEach(item => item.classList.remove('btn-danger'))
+        document.querySelectorAll('.day').item(count).classList.add('btn-danger')
+
+        var gr = "", g=0
+        for (var i = 0; i < schedule.length; i++)
+            if(schedule[i].day_id == count)
+                for (let j = 0; j < groups.length; j++)
+                    if(groups[j].id == schedule[i].group_id){
+                        gr += `<div class="btn-group w-100 mb-3">`
+                        if(new Date().toLocaleDateString() == document.querySelectorAll(".weekDay").item(dayCount).innerHTML) {
+                            if(groups[j].day == new Date().toLocaleDateString().replace('.', '/').replace('.', '/')) gr += `<input type="checkbox" class="btn-check" id="group_check${g}" autocomplete="off" checked="true" disabled>`
+                            else gr += `<input type="checkbox" class="btn-check" id="group_check${g}" autocomplete="off">`
+                            gr += `<label class="btn btn-outline-primary" for="group_check${g}"><i class="bi bi-check-lg"></i></label><br>`
+                        }
+                        gr += `<button onclick="group(${groups[j].id}, ${g})" class="btn w-75 group d-block btn-warning p-2"><h5 class="m-0">${groups[j].name}</h5></button>\n<button type="submit" data-toggle="modal" data-target="#remove" class="btn btn-danger bi bi-trash-fill" onclick="remove('groups', '${groups[j].name}', ${groups[j].id}, ${count})"></button>
+                        </div>`
+                        g++
+                    }
+                        
+        gr += '<button type="submit" data-toggle="modal" data-target="#addGroup" class="btn w-75 btn-danger mb-3"><h5 class="m-0">Add Group</h5></button>'
+        if(new Date().toLocaleDateString() == document.querySelectorAll(".weekDay").item(dayCount).innerHTML) gr += '<a href="/schedule"><button onclick="saveGroups()" class="btn w-75 mb-3 text-light" style="background: lime;"><h5 class="m-0">Save Groups</h5></button></a>'
+        document.getElementById("groups").innerHTML = gr
+    }
+
+    function saveGroups() {
+        var gr = document.getElementById("groups").children
+        var data = [{type: 'saveGroups'}]
+        for (let b = 0; b < gr.length - 2; b++) {
+            data.push({
+                checked: gr.item(b).children.item(0).checked,
+                group_id: parseInt(gr.item(b).children.item(3).getAttribute("onclick").substring(6, gr.item(b).children.item(3).getAttribute("onclick").indexOf(",")))
+            })
+        }
+        fetch('/schedule', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(data)
+        })
+    }
+
+    function saveStudents() {
+        var gr = document.getElementById("students").children
+        var data = [{type: 'saveStudents'}]
+        for (let b = 0; b < gr.length - 1; b++) {
+            var st_id, x=0
+            for (let c = 0; c < gr.item(b).children.item(4).getAttribute("onclick").length; c++) 
+                if (gr.item(b).children.item(4).getAttribute("onclick").charAt(c) == ",") {
+                    x++
+                    if(x == 2) st_id = gr.item(b).children.item(4).getAttribute("onclick").substring(c + 3, gr.item(b).children.item(4).getAttribute("onclick").lastIndexOf(",") - 1)
+                }
+            data.push({
+                checked: gr.item(b).children.item(0).checked,
+                group_id: grId,
+                student_id: parseInt(st_id)
+            })
+        }
+        fetch('/schedule', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(data)
+        })
+        console.log(data);
+    }
+
+    function t() {
+        var opt = ""
+        for (let i = 0; i < conTS.length; i++)
+            for (let j = 0; j < teachers.length; j++)
+                for (let k = 0; k < subjects.length; k++)
+                    if(teachers[j].name == document.getElementById("teacher").value && conTS[i].teacher_id == teachers[j].id && subjects[k].id == conTS[i].subject_id)
+                    opt += `<option value="${subjects[k].name}">${subjects[k].name}</option>\n`
+        document.getElementById("subject").innerHTML = opt
+        s()
+    }
+
+    function s() {
+        var opt = ""
+        for (let i = 0; i < teachers.length; i++)
+            for (let j = 0; j < subjects.length; j++)
+                for (let k = 0; k < groups.length; k++) {
+                        if(groups[k].teacher_id == teachers[i].id && 
+                        groups[k].subject_id == subjects[j].id && 
+                        document.getElementById("teacher").value == teachers[i].name && 
+                        document.getElementById("subject").value == subjects[j].name) {
+                            opt += `<option value="${groups[k].name}">${groups[k].name}</option>\n`
+                        }
+                }
+        document.getElementById("group").innerHTML = opt
+    }
+
+    function group(id, count) {
+        grId = id
+        grCount = count
+        document.querySelectorAll('.group').forEach(item => item.classList.remove('btn-danger'))
+        document.querySelectorAll('.group').item(count).classList.add('btn-danger')
+
+        var st = "", t = 0
+        for (let i = 0; i < conGS.length; i++)
+            if(conGS[i].group_id == id)
+                for (let j = 0; j < students.length; j++)
+                    if(students[j].id == conGS[i].student_id) {
+                        st += `<div class="btn-group w-100 mb-3">`
+                        if(new Date().toLocaleDateString() == document.querySelectorAll(".weekDay").item(dayCount).innerHTML) {
+                            if(conGS[i].day == new Date().toLocaleDateString().replace('.', '/').replace('.', '/')) st += `<input type="checkbox" class="btn-check" id="${conGS[i].group_id}student_check${t}" autocomplete="off" checked="true" disabled>`
+                            else st += `<input type="checkbox" class="btn-check" id="${conGS[i].group_id}student_check${t}" autocomplete="off">`
+                            st += `<label class="btn btn-outline-primary" for="${conGS[i].group_id}student_check${t}"><i class="bi bi-check-lg"></i></label><br>`
+                        }
+                        st += `<button class="btn w-75 group d-block btn-warning p-2"><h5 class="m-0">` + students[j].name + "</h5></button>\n"+
+                            `<button type="submit" data-toggle="modal" data-target="#remove" class="btn btn-danger bi bi-trash-fill" onclick="remove('students', '`+students[j].name+`', '`+students[j].id+`', '`+conGS[i].group_id+`')"></button>
+                        </div>`
+                        t++
+                    }
+        
+        if(new Date().toLocaleDateString() == document.querySelectorAll(".weekDay").item(dayCount).innerHTML) st += `<a href="schedule"><button onclick="saveStudents()" class="btn w-75 mb-3 text-light" style="background: lime;"><h5 class="m-0">Save Students</h5></button></a>`
+        document.getElementById("students").innerHTML = st
+    }
+
+    function addStudent() {
+        document.getElementById('subjectSt').defaultValue = subjects[subCount].name
+        document.getElementById('groupSt').defaultValue = groups[grCount].name
+
+        for (let i = 0; i < teachers.length; i++) {
+            if(teachers[i].id== groups[grCount].teacher_id) {
+                document.getElementById('teacherSt').defaultValue = teachers[i].name
+            }
+        }
+    }
+
+    function remove(table, name, id, conid) {
+        document.getElementById('roll').defaultValue = table
+        document.getElementById('name').defaultValue = name
+        document.getElementById('id').defaultValue = id
+        document.getElementById('conid').defaultValue = conid
+        if(conid != 0) document.getElementById('conid').defaultValue = conid
+    }
+</script>

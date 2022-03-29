@@ -1,0 +1,26 @@
+{
+  "name": "oquvmarkaz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TattiTitto",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "bootstrap-icons": "^1.8.1",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-ejs-layouts": "^2.5.1",
+    "express-handlebars": "^6.0.3",
+    "express-validator": "^6.14.0",
+    "handlebars": "^4.7.7",
+    "node-static": "^0.7.11",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.3",
+    "pm2": "^5.2.0"
+  }
+}
