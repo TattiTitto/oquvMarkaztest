@@ -304,8 +304,7 @@
                             else st += `<input type="checkbox" class="btn-check" id="${conGS[i].group_id}student_check${t}" autocomplete="off">`
                             st += `<label class="btn btn-outline-primary" for="${conGS[i].group_id}student_check${t}"><i class="bi bi-check-lg"></i></label><br>`
                         }
-                        st += `<button class="btn w-75 group d-block btn-warning p-2"><h5 class="m-0">` + students[j].name + "</h5></button>\n"+
-                            `<button type="submit" data-toggle="modal" data-target="#remove" class="btn btn-danger bi bi-trash-fill" onclick="remove('students', '`+students[j].name+`', '`+students[j].id+`', '`+conGS[i].group_id+`')"></button>
+                        st += `<button class="btn w-75 group d-block btn-warning p-2"><h5 class="m-0">` + students[j].name + "</h5></button>\n"
                         </div>`
                         t++
                     }
