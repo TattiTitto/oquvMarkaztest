@@ -193,7 +193,7 @@
         var gr = "", t = 0
         for (let i = 0; i < groups.length; i++) if(groups[i].teacher_id == techId && groups[i].subject_id == id) {
             gr += '<div class="btn-group w-100 mb-3"><button class="btn w-75 group d-block btn-warning p-2"><h5 class="m-0">' + groups[i].name + "</h5></button>\n"+
-            `<button type="submit" data-toggle="modal" data-target="#remove" class="btn p-0 btn-danger bi bi-trash-fill" onclick="remove('groups', '`+groups[i].name+`', '`+groups[i].id+`')"></button></div>`
+            `<button type="submit" data-toggle="modal" data-target="#remove" class="btn p-0 btn-danger bi bi-trash-fill" onclick="remove('groups', '`+groups[i].name+`', ${groups[i].id}, ${groups[i].teacher_id})"></button></div>`
             t++
         }
         document.getElementById('groups').innerHTML = gr
@@ -214,6 +214,7 @@
         document.getElementById('roll').defaultValue = table
         document.getElementById('name').defaultValue = name
         document.getElementById('id').defaultValue = id
+        document.getElementById('conid').defaultValue = conid
         if(conid != 0) document.getElementById('conid').defaultValue = conid
     }
 </script>
