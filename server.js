@@ -36,6 +36,7 @@ app.post("/teacher", urlencodedParser, (req, res) => {
         client.query(`DELETE FROM groups WHERE teacher_id=${req.body.id}`, (err0, res0) => {})
         client.query(`DELETE FROM teachers WHERE id=${req.body.id}`, (err0, res0) => {})
     } else if (req.body.remove == 'groups') {
+        console.log(req.body);
         client.query(`DELETE FROM con_group_student WHERE group_id=${req.body.id}`, (err0, res0) => {})
         client.query(`DELETE FROM groups WHERE id=${req.body.id}`, (err0, res0) => {})
     }
